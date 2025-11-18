@@ -13,7 +13,7 @@ export default async function createNewUrl(
     // error statements
 
     // Checks if URL is valid
-    if (!validateLongUrl(longUrl)) {
+    if (!(await validateLongUrl(longUrl))) {
         return { error: "Invalid URL. Must start with https:// or http://, be a valid website, use only valid URL characters, and contain no spaces." };
     }
 

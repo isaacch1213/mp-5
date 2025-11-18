@@ -90,7 +90,7 @@ export default function Home() {
 
                     createNewUrl(longUrl, alias)
                         .then((res) => {
-                            setResultUrl(`https://mp-5-delta-olive.vercel.app/${res.alias}`);
+                            setResultUrl(`https://mp-5-taupe-delta.vercel.app/${res.alias}`);
                         })
                         .catch((err) => {
                             setError(err.message);
@@ -114,7 +114,7 @@ export default function Home() {
                                 Custom Alias
                             </Typography>
                             <StyledLinkPlaceholder variant="h6" component="h4">
-                                https://mp-5-delta-olive.vercel.app/
+                                https://mp-5-taupe-delta.vercel.app/
                                 <StyledAliasField 
                                     placeholder="custom-alias" 
                                     value={alias}

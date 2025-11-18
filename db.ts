@@ -7,7 +7,7 @@ if (!MONGO_URI) {
 }
 
 const DB_NAME = "url-shortener";
-export const POSTS_COLLECTION = "urls"
+export const URL_COLLECTION = "urls"
 
 let client: MongoClient | null = null;
 let db: Db | null = null;

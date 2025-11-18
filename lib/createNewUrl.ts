@@ -7,17 +7,20 @@ import validateLongUrl from "./validateLongUrl";
 export default async function createNewUrl(
     longUrl: string,
     alias: string,
-): Promise<UrlProps> {
+): Promise<{ error?: string; id?: string; alias?: string }> {
     console.log("Creating new URL");
 
+    // Updated all error return statements to be an object, as Next.js does not render
+    // error statements
+    
     // Checks if URL is valid
     if (!validateLongUrl(longUrl)) {
-        throw new Error("Invalid URL. Must start with https:// or http://, be a valid website, and contain no spaces.");
+        return { error: "Invalid URL. Must start with https:// or http://, be a valid website, and contain no spaces." };
     }
 
     // Checks if alias is valid
     if (alias.includes(" ")) {
-        throw new Error("Alias cannot contain spaces");
+        return { error: "Alias cannot contain spaces" };
     }
 
     const urlCollection = await getCollection(URL_COLLECTION);
@@ -25,7 +28,7 @@ export default async function createNewUrl(
     // Checks if alias already exists
     const isExisting = await urlCollection.findOne({ alias });
     if (isExisting) {
-        throw new Error("Alias already exists. Create a different one.")
+        return { error: "Alias already exists. Create a different one." }
     }
 
     // insert to DB
@@ -37,7 +40,7 @@ export default async function createNewUrl(
     const res = await urlCollection.insertOne({...url});
 
     if (!res.acknowledged) {
-        throw new Error("DB insert failed");
+        return { error: "DB insert failed" };
     }
 
     return { ...url, id: res.insertedId.toHexString() };

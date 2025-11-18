@@ -90,10 +90,11 @@ export default function Home() {
 
                     createNewUrl(longUrl, alias)
                         .then((res) => {
+                            if (res.error) {
+                                setError(res.error);
+                                return;
+                            }
                             setResultUrl(`https://mp-5-taupe-delta.vercel.app/${res.alias}`);
-                        })
-                        .catch((err) => {
-                            setError(err.message);
                         })
                 }}
             >

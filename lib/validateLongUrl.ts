@@ -1,6 +1,6 @@
 export default function validateLongUrl(url: string): boolean {
-    // Checks if URL starts with https:// (a secure website)
-    if (!url.startsWith("https://")) {
+    // Checks if URL starts with https:// or http://
+    if (!url.startsWith("https://") && !url.startsWith("http://")) {
         return false;
     }
 

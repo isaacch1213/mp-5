@@ -12,7 +12,7 @@ export default async function createNewUrl(
 
     // Checks if URL is valid
     if (!validateLongUrl(longUrl)) {
-        throw new Error("Invalid URL. Must start with https://, be a valid website, and contain no spaces.");
+        throw new Error("Invalid URL. Must start with https:// or http://, be a valid website, and contain no spaces.");
     }
 
     // Checks if alias is valid

@@ -1,7 +1,6 @@
 "use server"
 
 import getCollection, { URL_COLLECTION } from "@/db";
-import { UrlProps } from "@/types/UrlProps";
 import validateLongUrl from "./validateLongUrl";
 
 export default async function createNewUrl(
@@ -15,7 +14,7 @@ export default async function createNewUrl(
 
     // Checks if URL is valid
     if (!validateLongUrl(longUrl)) {
-        return { error: "Invalid URL. Must start with https:// or http://, be a valid website, and contain no spaces." };
+        return { error: "Invalid URL. Must start with https:// or http://, be a valid website, use only valid URL characters, and contain no spaces." };
     }
 
     // Checks if alias is valid

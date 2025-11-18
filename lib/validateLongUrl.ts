@@ -9,6 +9,11 @@ export default function validateLongUrl(url: string): boolean {
         return false;
     }
 
+    // Checks for characters that are not safe inside a URL
+    if (encodeURIComponent(url) !== url) {
+        return false;
+    }
+
     // Uses the URL constructor from JavaScript to test if the URL is valid
     try {
         new URL(url);

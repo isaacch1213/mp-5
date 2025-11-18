@@ -1,3 +1,5 @@
+"use server"
+
 import getCollection, { URL_COLLECTION } from "@/db";
 import { UrlProps } from "@/types/UrlProps";
 import validateLongUrl from "./validateLongUrl";

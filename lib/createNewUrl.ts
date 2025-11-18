@@ -25,7 +25,7 @@ export default async function createNewUrl(
 
     // Checks for characters that are not safe in a URL path segment
     if (encodeURIComponent(alias) !== alias) {
-        return { error: "Invalid alias: You may only use valid URL characters." };
+        return { error: "Invalid alias. You may only use valid URL characters." };
     }
 
     const urlCollection = await getCollection(URL_COLLECTION);
